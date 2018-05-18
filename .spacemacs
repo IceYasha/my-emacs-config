@@ -344,11 +344,16 @@ you should place your code here."
       )
     )
 
+  ;; (setq face-font-rescale-alist '(("文泉驿等宽微米黑" . 1.2)))
   (if window-system
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
         (set-fontset-font (frame-parameter nil 'font)
                           charset (font-spec :family "文泉驿等宽微米黑"
                                              :size 16))))
+  ;; pangu spcing separator
+  (global-pangu-spacing-mode 0)
+  (set (make-local-variable 'pangu-spacing-real-insert-separtor) nil)
+
   (evil-leader/set-key "o w" 'copy-to-clipboard)
   (evil-leader/set-key "o y" 'paste-from-clipboard)
   (evil-leader/set-key "o d" 'youdao-dictionary-search-at-point+)
